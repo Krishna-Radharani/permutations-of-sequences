@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string getPermutation(int n, int k) {
+        std::string str;
+        for (int i = 1; i <= n; ++i) {
+            str += std::to_string(i);
+        }
+
+        // Sort the sequence to start with the smallest permutation
+        std::sort(str.begin(), str.end());
+
+        // Find the k-th permutation
+        int count = 1; // We start counting from 1 (1-indexed)
+        do {
+            if (count == k) {
+                return str;
+            }
+            count++;
+        } while (std::next_permutation(str.begin(), str.end()));
+
+        return ""; // In case k
+        
+    }
+};
